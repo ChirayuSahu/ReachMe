@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Delivery Form</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
+            <h1 class="text-2xl font-bold text-center mb-6">Medicine Delivery Form</h1>
+            
+            <!-- Flash Message Section -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        {% for message in messages %}
+                            <span class="block sm:inline">{{ message }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <!-- Form for medicine order -->
+            <form action="/submit" method="POST" class="space-y-4">
+                <div>
+                    <label for="Full_name" class="block font-medium text-gray-700">Full name:</label>
+                    <input type="text" id="Full_name" name="Full_name" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="Phone_number" class="block font-medium text-gray-700">Phone number:</label>
+                    <input type="number" id="Phone_number" name="Phone_number" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div id="medications" class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="flex-1">
+                            <label for="Medication" class="block font-medium text-gray-700">Medication:</label>
+                            <input type="text" name="Medication" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="flex-1">
+                            <label for="Quantity" class="block font-medium text-gray-700">Quantity:</label>
+                            <input type="number" name="Quantity" min="1" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button type="button" onclick="addMedication()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-md">Add Another Medication</button>
+                </div>
+
+                <div>
+                    <label for="Shipping_address" class="block font-medium text-gray-700">Delivery Address:</label>
+                    <input type="text" id="Shipping_address" name="Shipping_address" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    function addMedication() {
+        const div = document.createElement('div');
+        div.className = 'flex items-center space-x-2';
+        div.innerHTML = `
+            <div class="flex-1">
+                <label for="Medication" class="block font-medium text-gray-700">Medication:</label>
+                <input type="text" name="Medication" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div class="flex-1">
+                <label for="Quantity" class="block font-medium text-gray-700">Quantity:</label>
+                <input type="number" name="Quantity" min="0" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+        `;
+        document.getElementById('medications').appendChild(div);
+    }
+    </script>
+</body>
+</html>
