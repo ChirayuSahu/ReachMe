@@ -44,6 +44,10 @@ def index():
 def order_meds():
     return render_template('orderMeds.html')
 
+@app.route('/contact-us')
+def contact_us():
+    return render_template('contact-us.html')
+
 @app.route('/submit', methods=['POST'])
 def submit():
     full_name = request.form.get('Full_name')
