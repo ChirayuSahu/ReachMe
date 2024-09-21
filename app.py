@@ -12,6 +12,7 @@ app.secret_key = "supersecretkey"
 # Paths to Excel files
 MEDICINE_PRICES_FILE = "medicine_prices.xlsx"
 ORDERS_FILE = "orders.xlsx"
+DOCTORS_LIST_FILE = "doctor_list.xlsx"
 
 # Function to load medicine prices from Excel
 def load_medicine_prices():
@@ -39,6 +40,21 @@ def log_order_to_excel(full_name, phone_number, medication, quantity, shipping_a
     sheet = workbook.active
     sheet.append([full_name, phone_number, medication, quantity, shipping_address])
     workbook.save(ORDERS_FILE)
+
+# Function to read doctor list from Excel using openpyxl
+def get_doctor_list():
+    # Load the workbook and select the active worksheet
+    wb = load_workbook('doctor_list.xlsx')
+    ws = wb.active
+
+    # Collect doctor name and specialization from each row
+    doctor_list = []
+    for row in ws.iter_rows(min_row=2, values_only=True):  # Assuming the first row is the header
+        doctor_name = row[0]
+        specialization = row[1]
+        doctor_list.append((doctor_name, specialization))
+
+    return doctor_list
 
 # Load or create the Excel file
 excel_file = 'consultations.xlsx'
@@ -74,14 +90,18 @@ def talk_ai():
 
 @app.route('/consult')
 def consult():
-    # List of doctors
-    doctors = [
-        {'name': 'Dr. John Smith', 'specialty': 'Cardiologist'},
-        {'name': 'Dr. Sarah Johnson', 'specialty': 'Pediatrician'},
-        {'name': 'Dr. Michael Lee', 'specialty': 'Neurologist'},
-        {'name': 'Dr. Laura Moore', 'specialty': 'General Physician'},
-    ]
-    return render_template('consult.html', doctors=doctors)
+    # Load doctor data from Excel
+    workbook = load_workbook('doctor_list.xlsx')
+    sheet = workbook.active
+    doctors = []
+    
+    for row in sheet.iter_rows(min_row=2, values_only=True):  # assuming the first row is headers
+        doctor = {
+            'name': row[0],        # Adjust indices based on your Excel structure
+            'specialty': row[1]
+        }
+        doctors.append(doctor)
+    return render_template('consult.html',doctors=doctors)
 
 @app.route('/submit-consult', methods=['POST'])
 def submit_consult():

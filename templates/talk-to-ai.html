@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk to Groq AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 h-screen flex justify-center items-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-1/2">
+        <h1 class="text-2xl font-bold mb-4">Talk to Groq AI</h1>
+        <textarea id="message" rows="4" class="w-full p-2 border rounded mb-4" placeholder="Ask your question..."></textarea>
+        <button id="askButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ask Groq AI</button>
+        
+        <div id="response" class="mt-4 p-4 bg-gray-200 rounded"></div>
+    </div>
+
+    <script>
+        document.getElementById('askButton').addEventListener('click', async () => {
+            const message = document.getElementById('message').value;
+            const responseBox = document.getElementById('response');
+
+            responseBox.innerHTML = "Loading...";
+
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message })
+            });
+
+            const data = await response.json();
+            responseBox.innerHTML = data.response;
+        });
+    </script>
+</body>
+</html>
