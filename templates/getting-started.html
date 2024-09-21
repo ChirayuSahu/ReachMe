@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultation Form - ReachMe</title>
+    <title>Getting Started - ReachMe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <link href="/tailwind.config.js" rel="script">
@@ -63,58 +63,40 @@
     <section class="bg-white dark:bg-gray-900">
       <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div class="mr-auto place-self-center lg:col-span-7">
-              <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Consulation Form</h1>
-              <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Please fill all the fields.</p>
-              <img src="{{ url_for('static', filename='img/form-animated.svg') }}" alt="consult">
-              <!--
-              <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-                  Get started
+              <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Getting Started.</h1>
+              <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"></p>
+
+              <a href="/orderMeds" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                  Order Meds
                   <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
               </a>
-              <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                  Speak to Sales
+              <a href="/consult" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                  Consult a Doctor
               </a> 
-            -->
+            
           </div>
           
           <div class="lg:mt-0 lg:col-span-5 lg:flex">
-            <div class="min-h-full flex items-center justify-center">
-              <div class="container mx-auto">
-                <form action="/submit-consult" method="POST" class="dark:bg-gray-800 bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mt-6">
-                    <div class="mb-4">
-                        <label for="name" class="block dark:text-white text-sm font-bold mb-2">Name:</label>
-                        <input type="text" id="name" name="name" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
-                    </div>
-                    <div class="mb-4">
-                        <label for="phone" class="block text-gray-70 dark:text-white text-sm font-bold mb-2">Phone:</label>
-                        <input type="text" id="phone" name="phone" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
-                    </div>
-                    <div class="mb-4">
-                        <label for="problem" class="block text-gray-70 dark:text-white text-sm font-bold mb-2">Problem:</label>
-                        <textarea id="problem" name="problem" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight"></textarea>
-                    </div>
-                    <div class="mb-4">
-                        <label for="doctor" class="block text-gray-70 dark:text-white text-sm font-bold mb-2">Select Doctor:</label>
-                        <select id="doctor" name="doctor" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
-                            {% for doctor in doctors %}
-                            <option value="{{ doctor.name }}: {{ doctor.specialty }}">{{ doctor.name }} - {{ doctor.specialty }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label for="date" class="block text-gray-70 dark:text-white text-sm font-bold mb-2">Select Date:</label>
-                        <input type="date" id="date" name="date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
-                    </div>
-                    <div class="mb-4">
-                        <label for="time_slot" class="block text-gray-70 dark:text-white text-sm font-bold mb-2">Select Time Slot:</label>
-                        <input type="time" id="time_slot" name="time_slot" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
-                    </div>
-                </form>
-            </div>
-          </div>
+            
+            <ol class="relative border-s border-gray-200 dark:border-gray-700">                  
+                <li class="mb-10 ms-4">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">1. Ordering Medicines</h3>
+                    <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">By clicking on <i class="font-bold dark:text-white">Order Meds</i>, you can request medications for yourself to be delivered either to a nearby drop point or directly to your home.</p>
+                </li>
+                <li class="mb-10 ms-4">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">2. Requesting Appointment</h3>
+                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">Go to the <i class="font-bold dark:text-white">Consult</i> section now to book a one-on-one appointment with a doctor of your choice in just minutes.</p>
+                </li>
+                <li class="ms-4">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">3. More Features Coming Soon!</h3>
+                    <p class="text-base font-normal text-gray-500 dark:text-gray-400">Stay tuned for more features! We're working on making doctor appointments even easier for you.</p>
+                </li>
+            </ol>
+
+
           </div>                
       </div>
   </section>

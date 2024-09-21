@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import openpyxl
 from openpyxl import load_workbook
 from openpyxl import Workbook
 import os
+
+
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -62,6 +64,10 @@ def order_meds():
 def contact_us():
     return render_template('contact-us.html')
 
+@app.route('/getting-started')
+def talk_ai():
+    return render_template('getting-started.html')
+
 @app.route('/consult')
 def consult():
     # List of doctors
@@ -100,6 +106,9 @@ def thankyou():
     date = request.args.get('date')
     time_slot = request.args.get('time_slot')
     return render_template('thankyou.html', name=name, doctor=doctor, date=date, time_slot=time_slot)
+
+
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
