@@ -3,6 +3,9 @@ import openpyxl
 from openpyxl import load_workbook
 from openpyxl import Workbook
 import os
+import pytesseract
+from PIL import Image, ImageEnhance, ImageFilter
+import io
 
 
 
