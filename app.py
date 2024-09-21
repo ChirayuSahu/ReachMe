@@ -76,6 +76,19 @@ def index():
 def order_meds():
     return render_template('orderMeds.html')
 
+@app.route('/ptext')
+def p_text():
+    return render_template('ptext.html')
+
+@app.route('/talk-to-ai')
+def talk_to_ai():
+    return render_template('talk-to-ai.html')
+
+@app.route('/pa')
+def pa():
+    return render_template('pa.html')
+
+
 @app.route('/contact-us')
 def contact_us():
     return render_template('contact-us.html')
