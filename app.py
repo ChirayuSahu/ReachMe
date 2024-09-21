@@ -64,6 +64,10 @@ def order_meds():
 def contact_us():
     return render_template('contact-us.html')
 
+@app.route('/about-us')
+def about_us():
+    return render_template('about-us.html')
+
 @app.route('/getting-started')
 def talk_ai():
     return render_template('getting-started.html')
@@ -136,7 +140,7 @@ def submit():
 
             log_order_to_excel(full_name, phone_number, medication, quantity, shipping_address)
         else:
-            flash(f"Sorry, {medication.capitalize()} is currently unavailable.")
+            flash(f"Sorry, {medication.capitalize()} is currently unavailable.", 'error')  # Flash error message
             return redirect(url_for('order_meds'))
 
     return render_template('prescription.html', prescriptions=prescriptions)

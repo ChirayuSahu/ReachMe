@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"  rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="/">
+        <h1 class="text-lg text-green-500 font-bold">ReachMe</h1>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+                <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-300 md:dark:hover:bg-transparent" aria-current="page">Home</a>
+            </li>
+            <li>
+                <a href="/orderMeds" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-300 md:dark:hover:bg-transparent">Order Meds</a>
+            </li>
+            <li>
+                <a href="/consult" class="block py-2 px-3 text-white bg-green-700 rounded md:bg-transparent md:text-green-700 md:p-0 dark:text-white md:dark:text-green-500">Consult Dr.</a>
+            </li>
+            <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Services<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                    <li>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Prescription to Text</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Talk to AI</a>
+                    </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="block py-2 px-3 text-black-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-red-500 md:dark:hover:bg-transparent">Call Ambulance</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <!--About Us Sec-->
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
+            <h1 class="mb-4 text-4xl text-center font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                About Us!
+            </h1>
+            <br>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+            
+                <span class="dark:text-white font-bold">Empowering Rural Health Access:</span><br>
+                <br>
+                At ByteMe, we are dedicated to ensuring that everyone has access to essential medicines, irrespective of their location or technological proficiency. Our mission is to bridge the healthcare divide in rural communities through innovative solutions that prioritize user-friendliness and accessibility.<br>
+                <br>
+                <span class="dark:text-white font-bold">Our Vision:</span><br>
+                <br>
+                We envision a world where healthcare is universally accessible, particularly for those in remote areas. By harnessing advanced speech-to-text technology, we enable users to place orders for medications effortlessly, simply by speaking. This innovation dismantles barriers for individuals who may find traditional web interfaces challenging.<br>
+                <br>
+                <span class="dark:text-white font-bold">What We Do:</span><br>
+                <br>
+                We specialize in the distribution of medicines to rural regions, ensuring that every community is equipped with the resources necessary for improved health outcomes. Our intuitive website is crafted with simplicity in mind, allowing individuals—regardless of their technological skills—to navigate seamlessly and procure the medications they require.<br>
+                <br>
+                Furthermore, we offer consultations with our esteemed team of highly qualified doctors, providing expert medical guidance through our platform. This ensures that users receive the support they need in a comfortable and accessible manner.<br>
+                <br>
+                <span class="dark:text-white font-bold">Our Commitment:</span><br>
+                <br>
+                We are steadfast in our commitment to listen to the voices of rural populations and to comprehend their unique challenges. Our services are meticulously tailored to meet these needs, guaranteeing timely deliveries and reliable access to healthcare products. With a focus on education and empowerment, we inspire individuals to take charge of their health.<br>
+                <br>
+                <span class="dark:text-white font-bold">Join Us on Our Journey:</span><br>
+                <br>
+                Together, we can cultivate a healthier future for rural communities. Explore our platform and experience the transformative impact of accessible healthcare.<br>
+                <br>
+            </p>
+        </div>
+    </section>
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+            <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Team</h2>
+                <p class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">ReachMe Core Team</p>
+            </div> 
+            <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+                <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                                <img 
+        class="normal-image" 
+        src="{{ url_for('static', filename='img/nitigya.png') }}"
+        alt="Nitigya Khaneja"
+        >
+
+        <style>
+        .normal-image {
+            width: 100%; /* Adjust the percentage as needed */
+            max-width: 500px; /* Set a max width to avoid it becoming too large */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px; /* Optional: adds rounded corners */
+        }
+        </style>
+
+                    </a>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <a href="#">Nitigya Khaneja</a>
+                        </h3>
+                        <span class="text-gray-500 dark:text-gray-400">Co-Founder and Back-end, Web Developer</span>
+                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Nitigya drives the technical strategy of the ReachMe platform and brand.</p>
+                    </div>
+                </div> 
+                <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img width="150px" height="150px"
+                        class="normal-image" 
+                        src="{{ url_for('static', filename='img/chirayu.png') }}"
+                        alt="Chirayu Sahu"
+                      >
+                      
+                      <style>
+                        .normal-image {
+                          width: 100%; /* Adjust the percentage as needed */
+                          max-width: 500px; /* Set a max width to avoid it becoming too large */
+                          height: auto; /* Maintain aspect ratio */
+                          border-radius: 8px; /* Optional: adds rounded corners */
+                        }
+                      </style>
+                      
+                    </a>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <a href="#">Chirayu Sahu</a>
+                        </h3>
+                        <span class="text-gray-500 dark:text-gray-400">Co-Founder and Front-end Developer</span>
+                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Chirayu drives the technical strategy of the ReachMe platform and brand.</p>
+                    </div>
+                </div> 
+                <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ url_for('static', filename='img/pranav.png') }}" alt="Michael Avatar">
+                    </a>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <a href="#">Pranav Ramesh</a>
+                        </h3>
+                        <span class="text-gray-500 dark:text-gray-400">Co-Founder and Web, Back-end Developer</span>
+                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Pranav drives the technical strategy of the flowbite platform and brand.</p>
+                    </div>
+                </div> 
+                <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ url_for('static', filename='img/aarav.png') }}" alt="Sofia Avatar">
+                    </a>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <a href="#">Aarav Gupta</a>
+                        </h3>
+                        <span class="text-gray-500 dark:text-gray-400">Co-Founder and Front-end Developer </span>
+                        <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Aarav drives the technical strategy of the flowbite platform and brand.</p>
+                    </div>
+                </div>  
+            </div>  
+        </div>
+      </section>
+
+      <!-- Footer -->
+        <footer class="bg-white shadow text-center dark:bg-gray-900">
+            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="/" class="hover:underline">ReachMe™</a>. All Rights Reserved.</span>
+            </div>
+        </footer>
+
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+</body>
+</html>
