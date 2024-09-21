@@ -101,6 +101,29 @@ def about_us():
 def talk_ai():
     return render_template('getting-started.html')
 
+@app.route('/upload', methods=['POST'])
+def upload():
+    try:
+        file = request.files['image']
+        
+        # Open the image
+        img = Image.open(io.BytesIO(file.read()))
+
+        # Preprocess the image
+        img = img.convert('L')  # Convert to grayscale
+        img = img.filter(ImageFilter.SHARPEN)  # Sharpen the image
+
+        custom_config = r'--oem 3 --psm 6'  # Tesseract configurations
+        text = pytesseract.image_to_string(img, config=custom_config)
+
+        
+
+        
+        return {'text': text.strip() or 'No text found.'}
+    except Exception as e:
+        return {'error': str(e)}, 400
+
+
 @app.route('/consult')
 def consult():
     # Load doctor data from Excel
