@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import openpyxl
+from openpyxl import load_workbook
+from openpyxl import Workbook
 import os
 
 app = Flask(__name__)
@@ -36,6 +38,18 @@ def log_order_to_excel(full_name, phone_number, medication, quantity, shipping_a
     sheet.append([full_name, phone_number, medication, quantity, shipping_address])
     workbook.save(ORDERS_FILE)
 
+# Load or create the Excel file
+excel_file = 'consultations.xlsx'
+
+def init_excel():
+    if not os.path.exists(excel_file):
+        workbook = Workbook()
+        sheet = workbook.active
+        sheet.title = 'Consultations'
+        sheet.append(['Name', 'Phone', 'Problem', 'Doctor', 'Date', 'Time Slot'])
+        workbook.save(excel_file)
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -47,6 +61,45 @@ def order_meds():
 @app.route('/contact-us')
 def contact_us():
     return render_template('contact-us.html')
+
+@app.route('/consult')
+def consult():
+    # List of doctors
+    doctors = [
+        {'name': 'Dr. John Smith', 'specialty': 'Cardiologist'},
+        {'name': 'Dr. Sarah Johnson', 'specialty': 'Pediatrician'},
+        {'name': 'Dr. Michael Lee', 'specialty': 'Neurologist'},
+        {'name': 'Dr. Laura Moore', 'specialty': 'General Physician'},
+    ]
+    return render_template('consult.html', doctors=doctors)
+
+@app.route('/submit-consult', methods=['POST'])
+def submit_consult():
+    # Get form data
+    name = request.form['name']
+    phone = request.form['phone']
+    problem = request.form['problem']
+    doctor = request.form['doctor']
+    date = request.form['date']
+    time_slot = request.form['time_slot']
+    
+    # Store data in Excel
+    workbook = load_workbook(excel_file)
+    sheet = workbook.active
+    sheet.append([name, phone, problem, doctor, date, time_slot])
+    workbook.save(excel_file)
+    
+    # Redirect to thank you page
+    return redirect(url_for('thankyou', name=name, doctor=doctor, date=date, time_slot=time_slot))
+
+@app.route('/thankyou')
+def thankyou():
+    # Get the data from the query string
+    name = request.args.get('name')
+    doctor = request.args.get('doctor')
+    date = request.args.get('date')
+    time_slot = request.args.get('time_slot')
+    return render_template('thankyou.html', name=name, doctor=doctor, date=date, time_slot=time_slot)
 
 @app.route('/submit', methods=['POST'])
 def submit():
