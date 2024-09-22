@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Ambulance - ReachMe</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="dark:bg-gray-900">
+
+    <!--Navbar-->
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="/">
+        <h1 class="text-lg text-green-500 font-bold">ReachMe</h1>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+                <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-300 md:dark:hover:bg-transparent">Home</a>
+            </li>
+            <li>
+                <a href="/orderMeds" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-300 md:dark:hover:bg-transparent">Order Meds</a>
+            </li>
+            <li>
+                <a href="/consult" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-300 md:dark:hover:bg-transparent">Consult Dr.</a>
+            </li>
+            <li>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Services<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                      <li>
+                        <a href="/pa" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Prescription to Text</a>
+                      </li>
+                      <li>
+                        <a href="/talk-to-ai" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Talk to AI</a>
+                      </li>
+                    </ul>
+                </div>
+              </li>
+            <li>
+                <a href="/call-ambulance" class="block py-2 px-3 text-white bg-red-700 rounded md:bg-transparent md:text-red-700 md:p-0 dark:text-white md:dark:text-red-500" aria-current="page">Call Ambulance</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <section class="bg-white dark:bg-gray-900">
+        <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+            <div class="lg:col-span-5 lg:flex">
+                <div class="min-h-full flex items-center justify-center">
+                    <div class="dark:bg-gray-800 bg-gray-100 shadow-lg rounded-lg p-8 max-w-lg w-full">
+                        <h2 class="text-lg font-medium text-gray-700 dark:text-white">Call an Ambulance</h2>
+                        <form id="ambulanceForm" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 dark:text-white">Name</label>
+                                <input type="text" id="name" class="w-full p-2 rounded" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 dark:text-white">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full p-2 rounded" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 dark:text-white">Emergency</label>
+                                <input type="text" id="emergency" class="w-full p-2 rounded" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 dark:text-white">Location</label>
+                                <input type="text" id="location" class="w-full p-2 rounded" disabled>
+                            </div>
+                            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Call Ambulance</button>
+                        </form>
+                        <p id="confirmationMessage" class="mt-4 text-green-500"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch the user's current location using the browser's Geolocation API
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    document.getElementById('location').value = `Lat: ${latitude}, Long: ${longitude}`;
+                }, function (error) {
+                    console.error('Error fetching location: ', error);
+                    document.getElementById('location').value = 'Unable to retrieve location';
+                });
+            } else {
+                document.getElementById('location').value = 'Geolocation not supported';
+            }
+
+            // Handle form submission
+            document.getElementById('ambulanceForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const emergency = document.getElementById('emergency').value;
+                const location = document.getElementById('location').value;
+
+                if (location !== 'Unable to retrieve location') {
+                    document.getElementById('confirmationMessage').innerText =
+                        `Thank you, ${name}. Your ambulance is arriving within 5 minutes to the location: ${location}`;
+                } else {
+                    document.getElementById('confirmationMessage').innerText =
+                        `Sorry, we couldn't get your location. Please try again.`;
+                }
+            });
+        });
+    </script>
+
+    <!--Footer-->
+    <footer class="bg-white shadow m-2 text-center dark:bg-gray-900">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="/" class="hover:underline">ReachMe™</a>. All Rights Reserved.</span>
+        </div>
+    </footer>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
+</body>
+</html>
