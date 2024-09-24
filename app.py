@@ -8,7 +8,6 @@ from PIL import Image, ImageEnhance, ImageFilter
 import io
 
 
-
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
@@ -125,6 +124,27 @@ def upload():
         return {'text': text.strip() or 'No text found.'}
     except Exception as e:
         return {'error': str(e)}, 400
+    
+
+@app.route('/call-ambulance')
+def call_ambulance():
+    return render_template('call-ambulance.html')
+
+@app.route('/submitAmbulanceRequest', methods=['POST'])
+def submit_ambulance_request():
+    name = request.form.get('name')
+    phone = request.form.get('phone')
+    emergency = request.form.get('emergency')
+    location = request.form.get('location')
+
+    # Process the form data (e.g., log it, send to a database, etc.)
+    print(f"Ambulance request from {name}, Phone: {phone}, Emergency: {emergency}, Location: {location}")
+
+    # Here, you could add functionality to send the data to a service or store it
+    response_message = f"Thank you, {name}. Your ambulance is arriving within 5 minutes to the location: {location}"
+
+    # Returning a JSON response or just re-rendering the page with a confirmation message
+    return jsonify({'message': response_message})
 
 
 @app.route('/consult')
@@ -161,26 +181,6 @@ def submit_consult():
     # Redirect to thank you page
     return redirect(url_for('thankyou', name=name, doctor=doctor, date=date, time_slot=time_slot))
 
-@app.route('/call-ambulance')
-def call_ambulance():
-    return render_template('call-ambulance.html')
-
-@app.route('/submitAmbulanceRequest', methods=['POST'])
-def submit_ambulance_request():
-    name = request.form.get('name')
-    phone = request.form.get('phone')
-    emergency = request.form.get('emergency')
-    location = request.form.get('location')
-
-    # Process the form data (e.g., log it, send to a database, etc.)
-    print(f"Ambulance request from {name}, Phone: {phone}, Emergency: {emergency}, Location: {location}")
-
-    # Here, you could add functionality to send the data to a service or store it
-    response_message = f"Thank you, {name}. Your ambulance is arriving within 5 minutes to the location: {location}"
-
-    # Returning a JSON response or just re-rendering the page with a confirmation message
-    return jsonify({'message': response_message})
-                           
 @app.route('/thankyou')
 def thankyou():
     # Get the data from the query string
@@ -189,8 +189,6 @@ def thankyou():
     date = request.args.get('date')
     time_slot = request.args.get('time_slot')
     return render_template('thankyou.html', name=name, doctor=doctor, date=date, time_slot=time_slot)
-
-
 
 
 @app.route('/submit', methods=['POST'])

@@ -81,7 +81,26 @@
                 <div class="dark:bg-gray-800 bg-gray-100 shadow-lg rounded-lg p-8 max-w-lg w-full">
 
                     <div id="container" class="max-w-3xl w-full bg-white shadow-md rounded-lg p-6">
-                        Feature Available Soon
+                
+                        <!-- Image Upload Form -->
+                        <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data" class="flex flex-col items-center space-y-4">
+                            <div id="uploadSection" class="w-full flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                                <!-- Image Upload Input -->
+                                <input id="fileInput" type="file" name="image" accept="image/*" class="block w-full text-sm text-gray-900 p-2 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-blue-500">
+                            </div>
+                            <!-- Submit Button -->
+                            <button id="submitButton" type="submit" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                                Upload Image
+                            </button>
+                        </form>
+                
+                        <!-- Result Section -->
+                        <div id="result" class="mt-6">
+                            <h2 id="resultTitle" class="text-xl font-semibold text-gray-700">Extracted Text:</h2>
+                            <p id="extractedText" class="mt-2 bg-gray-100 p-4 rounded-lg text-gray-700">
+                                No text extracted yet.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
